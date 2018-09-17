@@ -1,0 +1,30 @@
+<div class="btn-group" align="middle">
+  <button class="btn btn-danger" (click)="filterTag('menina')">Meninas</button>
+  <button class="btn btn-primary" (click)="filterTag('menino')">Meninos</button>
+  <button class="btn btn-warning" (click)="filterTag()">Todos</button>
+</div>
+
+<hr style="margin-top:10px">
+<div class="container">
+  <div *ngFor="let item of temas | orderBy: ['nome'] | filterBy: ['tag']:tag">
+      <div class="row">
+          <div class="col-md-3 animated fadeIn">
+              <div class="card {{item.color}} text-white" align="middle" style="box-shadow: none;">
+                  <img src={{item.url}} class="img-thumbnail {{item.color}}" style="border: none;">
+                  <div class="card-body">
+                      <h5>{{item.nome}}</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-1 vertical-tema"></div>
+          <div class="col-md-6">
+              <div class="row">
+                  <a *ngFor="let imagens of item.imgs" class="col-md-3" href={{imagens}}>
+                      <img class="img-thumbnail" src="{{imagens}}">
+                  </a>
+              </div>
+          </div>
+      </div>
+      <br>
+  </div>
+</div>
